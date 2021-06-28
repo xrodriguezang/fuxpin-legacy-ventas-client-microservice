@@ -20,7 +20,7 @@ Client-side *Service Discovery* allows services to find and communicate with eac
 &#8594; *with* PostgreSQL
 
 ## Current version
-![](https://img.shields.io/badge/fuxpin%20legacy%20ventas%20rol%20microservice-0.0.1-blue)
+![](https://img.shields.io/badge/fuxpin%20legacy%20ventas%20client%20microservice-0.0.1-blue)
 
 
 # Define Environment
@@ -82,12 +82,12 @@ sudo chown -R pi:pi /opt/java-jars
 ````
 * Create Systemd Service
 ````
-sudo vi /etc/systemd/system/fuxpixlegacyventasclientmicroservice.service
+sudo vi /etc/systemd/system/fuxpinlegacyventasclientmicroservice.service
 ````
 with contents:
 ````editorconfig
 [Unit]
-Description=Fuxpin Legacy Ventas Role Microservice
+Description=Fuxpin Legacy Ventas Client Microservice
 
 [Service]
 WorkingDirectory=/opt/java-jars
@@ -109,52 +109,52 @@ sudo systemctl daemon-reload
 * Once realoaded, the service is avaliable:
 
 ````
-sudo systemctl start fuxpixlegacyventasclientmicroservice
+sudo systemctl start fuxpinlegacyventasclientmicroservice
 ````
 * Also, verify the status:
 
 ````
-sudo systemctl status fuxpixlegacyventasclientmicroservice
+sudo systemctl status fuxpinlegacyventasclientmicroservice
 ````
 Result:
 
 ````
-● fuxpixlegacyventasclientmicroservice.service - Fuxpin Legacy Ventas Role Microservice
-   Loaded: loaded (/etc/systemd/system/fuxpixlegacyventasclientmicroservice.service; disabled; vendor preset: enabled)
+● fuxpinlegacyventasclientmicroservice.service - Fuxpin Legacy Ventas Client Microservice
+   Loaded: loaded (/etc/systemd/system/fuxpinlegacyventasclientmicroservice.service; disabled; vendor preset: enabled)
    Active: active (running) since Thu 2021-05-27 17:45:20 CEST; 1min 39s ago
  Main PID: 4022 (java)
     Tasks: 44 (limit: 4915)
    Memory: 226.3M
-   CGroup: /system.slice/fuxpixlegacyventasclientmicroservice.service
-           └─4022 /usr/bin/java -Xms128m -Xmx256m -jar -Dspring.profiles.active=production -Drest.user=user -Drest.password=password -Dpostgresql.user=user -Dpostgresql.password=password fuxpin-legacy-ventas-rol-microservice-0.0.1.jar
+   CGroup: /system.slice/fuxpinlegacyventasclientmicroservice.service
+           └─4022 /usr/bin/java -Xms128m -Xmx256m -jar -Dspring.profiles.active=production -Drest.user=user -Drest.password=password -Dpostgresql.user=user -Dpostgresql.password=password fuxpin-legacy-ventas-client-microservice-0.0.1.jar
 
-May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,375 INFO  com.netflix.discovery.DiscoveryClient : The response status is 200
-May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,387 INFO  com.netflix.discovery.DiscoveryClient : Starting heartbeat executor: renew interval is: 10
-May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,398 INFO  com.netflix.discovery.InstanceInfoReplicator : InstanceInfoReplicator onDemand update allowed rate per min is 4
-May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,419 INFO  com.netflix.discovery.DiscoveryClient : Discovery Client initialized at timestamp 1622130359416 with initial instances count: 2
-May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,429 INFO  org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry : Registering application FUXPIN-ROLE-MICROSERVICE with eureka with status UP
-May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,431 INFO  com.netflix.discovery.DiscoveryClient : Saw local status change event StatusChangeEvent [timestamp=1622130359431, current=UP, previous=STARTING]
-May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,439 WARN  com.netflix.discovery.InstanceInfoReplicator : Ignoring onDemand update due to rate limiter
-May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,474 INFO  com.netflix.discovery.DiscoveryClient : DiscoveryClient_FUXPIN-ROLE-MICROSERVICE/pi.intranet.cat:fuxpin-role-microservice:0: registering service...
-May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,539 INFO  unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.EurekaClientApplication : Started EurekaClientApplication in 35.809 seconds (JVM running for 39.335)
-May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,834 INFO  com.netflix.discovery.DiscoveryClient : DiscoveryClient_FUXPIN-ROLE-MICROSERVICE/pi.intranet.cat:fuxpin-role-microservice:0 - registration status: 204
+Jun 28 22:43:20 raspberrypi java[11029]: 2021-06-28 22:43:20.062  INFO 11029 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+Jun 28 22:43:20 raspberrypi java[11029]: 2021-06-28 22:43:20.073  INFO 11029 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 10
+Jun 28 22:43:20 raspberrypi java[11029]: 2021-06-28 22:43:20.089  INFO 11029 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+Jun 28 22:43:20 raspberrypi java[11029]: 2021-06-28 22:43:20.109  INFO 11029 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1624913000106 with initial instances count: 1
+Jun 28 22:43:20 raspberrypi java[11029]: 2021-06-28 22:43:20.119  INFO 11029 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application FUXPIN-CLIENT-LEGACY-MICROSERVICE with eureka with status UP
+Jun 28 22:43:20 raspberrypi java[11029]: 2021-06-28 22:43:20.122  INFO 11029 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1624913000122, current=UP, previous=STARTING]
+Jun 28 22:43:20 raspberrypi java[11029]: 2021-06-28 22:43:20.127  WARN 11029 --- [           main] c.n.discovery.InstanceInfoReplicator     : Ignoring onDemand update due to rate limiter
+Jun 28 22:43:20 raspberrypi java[11029]: 2021-06-28 22:43:20.163  INFO 11029 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUXPIN-CLIENT-LEGACY-MICROSERVICE/pi.intranet.cat:fuxpin-client-legacy-microservice:0: registering service...
+Jun 28 22:43:20 raspberrypi java[11029]: 2021-06-28 22:43:20.269  INFO 11029 --- [           main] u.t.f.f.EurekaClientApplication          : Started EurekaClientApplication in 35.957 seconds (JVM running for 39.511)
+Jun 28 22:43:20 raspberrypi java[11029]: 2021-06-28 22:43:20.743  INFO 11029 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_FUXPIN-CLIENT-LEGACY-MICROSERVICE/pi.intranet.cat:fuxpin-client-legacy-microservice:0 - registration status: 204
 ````
 
 * To stop the service-application:
 
 ````
-sudo systemctl stop fuxpixlegacyventasclientmicroservice
+sudo systemctl stop fuxpinlegacyventasclientmicroservice
 ````
 
 * To restart the service-application:
 
 ````
-sudo systemctl restart fuxpixlegacyventasclientmicroservice
+sudo systemctl restart fuxpinlegacyventasclientmicroservice
 ````
 
 * To enable the service on startup server boot:
 ````
-sudo systemctl enable fuxpixlegacyventasclientmicroservice
+sudo systemctl enable fuxpinlegacyventasclientmicroservice
 ````
 Result:
 
