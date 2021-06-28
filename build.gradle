@@ -1,0 +1,55 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'unir.tfg.fuxpin'
+version = '0.0.1'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "2020.0.2")
+}
+
+dependencies {
+
+	compileOnly 'org.projectlombok:lombok'
+
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+	// By default is not activated. It is activated to get the properties of Spring Cloud Config - Server
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+
+	// Starter to became a Spring Cloud Config Client
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Interface to interact with de database
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Postgresql database
+	runtimeOnly 'org.postgresql:postgresql'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+
+test {
+	useJUnitPlatform()
+}
