@@ -29,9 +29,8 @@ public class EurekaClientApplication {
 }
 
 /**
- * Rest Controller provides the roles and infomation of the service registered
+ * Rest Controller provides the legacy clients and infomation of the service registered
  */
-
 @RestController
 @Log4j2
 class ServiceInstanceRestController implements ClientsController {
@@ -66,6 +65,11 @@ class ServiceInstanceRestController implements ClientsController {
 
 	}
 
+	/**
+	 * Provides the clients of the legacy application
+	 *
+	 * @return legacy clients
+	 */
 	@Override
 	public ResponseEntity<?> getClients() {
 
